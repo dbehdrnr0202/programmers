@@ -1,5 +1,5 @@
 import math
-
+# parking_time_dict[car_number] = parking_time
 global parking_time_dict
 
 def cal_time(parking_start:str, parking_end:str):
@@ -10,14 +10,14 @@ def cal_time(parking_start:str, parking_end:str):
     parking_minute = int(end_minute)-int(start_minute)
     return parking_hour*60+parking_minute
 
-def cal_fee(fees, time):
+def cal_fee(fees:list[int], time:int):
     fee = 0
     fee+=fees[1]
     if time>fees[0]:
         fee+=fees[3]*math.ceil((time-fees[0])/fees[2])
     return fee
 
-def solution(fees, records):
+def solution(fees:list[str], records:list):
     answer = []
     record_dict = {}
     global parking_time_dict
