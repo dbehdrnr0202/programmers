@@ -19,8 +19,6 @@ def solution(edges):
     for out_going_vertex in edge_out_list[added_vertex]:
         edge_in_list[out_going_vertex].remove(added_vertex)
     for vertex in range(max_vertex_index+1):
-        #if vertex==edge_out_list[added_vertex]:
-        #    continue
         if vertex==0 or vertex==added_vertex:
             continue
         if len(edge_out_list[vertex])==0:
