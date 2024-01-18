@@ -4,6 +4,6 @@
 #import practice.sol169198 as sol
 import lessons.sol85891 as sol
 if __name__=="__main__":
-    my_string="3 + 4"	
+    quiz=["3 - 4 = -3", "5 + 6 = 11"]	
     #[4, 6, 5, 1]
-    print(sol.solution(my_string))
+    print(sol.solution(quiz))
