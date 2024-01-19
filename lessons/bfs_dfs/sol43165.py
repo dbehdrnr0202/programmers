@@ -23,4 +23,5 @@ def solution(numbers, target):
     g_number = numbers
     g_target = target
     dfs(0, 0)
+    answer = g_answer
     return answer
