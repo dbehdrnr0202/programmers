@@ -2,15 +2,17 @@ from collections import deque
 
 def solution(tickets):
     answer = []
-    cities = {}
-    for ticket in tickets:
-        if cities.get(ticket[0])==None:
-            cities[ticket[0]]=[]
-        cities[ticket[0]]+=[ticket[1]]
-
-    start = "ICN"
-    q = deque
+    q = deque()
+    start = ("ICN",["ICN"], [])
     q.append(start)
     while q:
-        cur = q.popleft()
-    return answer
+        current, path, used_tickets =  q.popleft()
+        
+        if len(used_tickets) == len(tickets):
+            answer.append(path)
+        for idx, ticket in enumerate(tickets):
+            if ticket[0] == current and not idx in used_tickets:
+                q.append((ticket[1], path+[ticket[1]], used_tickets+[idx]))
+    answer.sort()
+
+    return answer[0]
