@@ -1,42 +1,30 @@
 def solution(queue1, queue2):
     answer = float('INF')
-    queue = queue1+queue2
+    queue = queue1+queue2+queue1+queue2
     target = int((sum(queue1)+sum(queue2))/2)
-    sum_of_queue = []
-    range_of_queue_index = []
-    target_min_index = 0
-    target_max_index = 0
-    exchange_answer = []
-
-    for index in range(len(queue)):
-        if index==0:
-            appending_sum = queue[0]
-        else:
-            appending_sum = sum_of_queue[-1]+queue[index]
-        sum_of_queue.append(appending_sum)
-
-        if appending_sum==target:
-            target_max_index=index
-            target_min_index = 0
-            exchange_count = (target_max_index+1)+(target_min_index-len(queue1))
-            answer = min(answer, exchange_count)
-            exchange_answer.append(abs(exchange_count))
-
-            break
-        if appending_sum<target:
-            continue
-        for small_index in range(index+1):
-            if (appending_sum-sum_of_queue[small_index])==target:
-                target_max_index = index
-                target_min_index = small_index+1
-                exchange_count = (target_max_index+1)+(target_min_index-len(queue1))
-                answer = min(answer, exchange_count)
-                exchange_answer.append(abs(exchange_count))
-
+    start_point, end_point = 0, 0
+    # 여기서 무엇을 해야할까
+    # 그냥 two point를 사용해서 
+    start_point, end_point = 0, len(queue1)-1
+    init_start_point, init_end_point = start_point, end_point
+    cur_sum = sum(queue1)
+    answer = []
+    while end_point<len(queue) and start_point<=end_point:
+        if cur_sum==target:
+            answer.append((start_point-init_start_point, end_point-init_end_point))
+            end_point+=1
+            if end_point>=len(queue):
                 break
-            if (appending_sum-sum_of_queue[small_index])<target:
+            cur_sum+=queue[end_point]
+        elif cur_sum<target:
+            end_point+=1
+            if end_point>=len(queue):
                 break
-    if answer == float('INF'):
+            cur_sum+=queue[end_point]
+        elif cur_sum>=target:
+            cur_sum-=queue[start_point]
+            start_point+=1
+    answer.sort(key=lambda x:(x[0]+x[1]))
+    if answer==[]:
         return -1
-    answer = min(exchange_answer)
-    return answer
+    return sum(answer[0])
