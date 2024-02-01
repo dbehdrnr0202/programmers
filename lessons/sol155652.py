@@ -6,9 +6,3 @@ def solution(string, skips, index):
     for s in string:
         answer+=alphabet[(alphabet.index(s)+index)%len(alphabet)]
     return answer
-
-
-s = "aukks"	
-skip = "wbqd"	
-index = 5
-print(solution(s, skip, index))
