@@ -19,6 +19,3 @@ def solution(weights):
             if mul[0]*weight_value1==mul[1]*weight_value2:
                 answer+=weight_dict[weight_value1]*weight_dict[weight_value2]
     return answer
-
-weights = [100,180,360,100,270]	
-print(solution(weights))
