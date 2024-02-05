@@ -42,12 +42,4 @@ def solution(cap, n, deliveries, pickups):
             else:
                 break
         answer+=2*dist
-        #print(pick_que)
-
     return answer
-
-cap = 4	
-n=5	
-deliveries=[1, 0, 3, 1, 2]	
-pickups=[0, 3, 0, 4, 0]
-print(solution(cap, n, deliveries, pickups))
