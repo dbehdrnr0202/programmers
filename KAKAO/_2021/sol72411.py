@@ -21,6 +21,3 @@ def solution(orders, courses):
         if max_value>1:
             answer+=max_list
     return sorted(answer)
-orders = 	["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"]
-course = [2,3,4]	
-print(solution(orders, course))
