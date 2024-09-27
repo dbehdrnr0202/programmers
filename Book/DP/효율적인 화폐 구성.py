@@ -3,7 +3,7 @@ INF = 10000001
 def solution():
     n, m = map(int, input().split())
     lst = []
-    arr = [INF] * 10001
+    arr = [INF] * 100001
     for _ in range(n):
         money = int(input())
         lst.append(money)
